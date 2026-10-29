@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mstudiocrochet.github.io/sitemap.xml
+Sitemap: https://mAndStudio.github.io/sitemap.xml

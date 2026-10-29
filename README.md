@@ -1,6 +1,6 @@
 # MStudio 手作鈎織
 
-公開網址（Google 可收錄）：[https://mstudiocrochet.github.io/](https://mstudiocrochet.github.io/)
+公開網址（Google 可收錄）：[https://mAndStudio.github.io/](https://mAndStudio.github.io/)
 
 靜態商店頁：首頁、商品列表、商品詳情、購物籃，購入時把訂單文字複製並開啟 Instagram 訊息。
 
