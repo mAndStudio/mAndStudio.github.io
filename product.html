@@ -5,7 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>MStudio 手作鈎織</title>
   <meta name="description" content="MStudio 手作鈎織商品詳情。">
-  <link rel="canonical" href="https://mstudiocrochet.github.io/products.html">
+  <link rel="canonical" id="canonical-url" href="https://mstudiocrochet.github.io/product.html">
+  <script>
+    (function () {
+      var id = new URLSearchParams(location.search).get("id") || "";
+      if (/^[A-Za-z0-9_-]+$/.test(id)) {
+        document.getElementById("canonical-url").href =
+          "https://mstudiocrochet.github.io/product.html?id=" + encodeURIComponent(id);
+      }
+    })();
+  </script>
   <style>
     html, body {
       margin: 0;
