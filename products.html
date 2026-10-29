@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MStudio 手作鈎織</title>
+  <meta name="description" content="MStudio 手作鈎織商品列表：手工鈎織吊飾與飲料提袋。">
+  <link rel="canonical" href="https://m9913008-hub.github.io/products.html">
+  <style>
+    html, body {
+      margin: 0;
+      background: #fff;
+      color: #222;
+      font-family: "Segoe UI", "Microsoft JhengHei", sans-serif;
+    }
+
+    body {
+      padding-bottom: 128px;
+    }
+
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 172px;
+      overflow: hidden;
+      background-color: #111;
+      background-image: url("pic/page/bg.jpg");
+      background-repeat: repeat;
+      background-size: 115px 172px;
+      background-position: 0 0;
+    }
+
+    .hero img {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 408px;
+      height: 612px;
+      transform: translate(-50%, -50%);
+    }
+
+    .tabs {
+      display: flex;
+      align-items: stretch;
+      box-sizing: border-box;
+      height: 48px;
+      background: #fff;
+      border-bottom: 1px solid #e4e4e4;
+    }
+
+    .tabs a {
+      flex: 0 0 auto;
+      box-sizing: border-box;
+      height: 100%;
+      padding: 0 20px;
+      display: inline-flex;
+      align-items: center;
+      white-space: nowrap;
+      text-decoration: none;
+      color: #333;
+      font-size: 16px;
+    }
+
+    .tabs a[aria-current="page"] {
+      color: #111;
+      font-weight: 600;
+      box-shadow: inset 0 -2px 0 #111;
+    }
+
+    .catalog {
+      height: auto;
+      padding: 16px;
+    }
+
+    .intro h1 {
+      margin: 0 0 16px;
+      font-size: 20px;
+    }
+
+    .intro h2 {
+      margin: 24px 0 8px;
+      font-size: 18px;
+    }
+
+    .intro p {
+      margin: 0 0 8px;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .intro img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    @media (max-width: 768px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .product img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      display: block;
+      background: #f3f3f3;
+    }
+
+    .product .name {
+      margin: 8px 0 0;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .product a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .product .price,
+    .catalog > .price,
+    .detail-price .price {
+      margin: 4px 0 0;
+      font-size: 16px;
+      color: #e10600;
+    }
+
+    .detail-price {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 4px 0 16px;
+    }
+
+    .detail-price .price {
+      margin: 0;
+      font-size: 19px;
+    }
+
+    .add-cart {
+      background: #ffbf40;
+      border: 1px solid #e0a020;
+    }
+
+    .detail-price .add-cart {
+      height: 32px;
+      padding: 0 12px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .product .order {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .product .order input[type="number"] {
+      width: 72px;
+      box-sizing: border-box;
+      padding: 4px 6px;
+      font-size: 16px;
+    }
+
+    .product .order button {
+      height: 32px;
+      padding: 0 10px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .detail-hero {
+      margin: 0 0 12px;
+    }
+
+    .detail-hero img {
+      width: 100%;
+      max-width: 520px;
+      aspect-ratio: 1;
+      object-fit: cover;
+      display: block;
+      background: #f3f3f3;
+    }
+
+    .detail-thumbs {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 8px;
+      overflow-x: auto;
+      margin: 0 0 16px;
+      padding-bottom: 8px;
+    }
+
+    .detail-thumbs button {
+      flex: 0 0 auto;
+      width: 88px;
+      height: 88px;
+      padding: 0;
+      border: 2px solid transparent;
+      background: #f3f3f3;
+      cursor: pointer;
+    }
+
+    .detail-thumbs button.is-current {
+      border-color: #111;
+    }
+
+    .detail-thumbs img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .describe h1, .describe h2, .describe h3 {
+      margin: 16px 0 8px;
+    }
+
+    .describe p {
+      margin: 0 0 12px;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .back {
+      display: inline-block;
+      margin-bottom: 16px;
+      color: #145072;
+    }
+
+    .buy-bar {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 64px;
+      height: 56px;
+      background: #fff;
+      border-top: 1px solid #e4e4e4;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 12px;
+      padding: 0 16px;
+      box-sizing: border-box;
+    }
+
+    .buy-bar button {
+      position: relative;
+      height: 40px;
+      padding: 0 24px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      background: #d7f0d7;
+      border: 1px solid #b7d8b7;
+    }
+
+    #cart-count {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      min-width: 18px;
+      height: 18px;
+      padding: 0 5px;
+      box-sizing: border-box;
+      border-radius: 9px;
+      background: #e10600;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 18px;
+      text-align: center;
+    }
+
+    #cart-count.is-empty {
+      display: none;
+    }
+
+    .cart-panel {
+      display: none;
+      position: fixed;
+      left: 16px;
+      right: 16px;
+      bottom: 128px;
+      max-height: 40vh;
+      overflow: auto;
+      background: #fff;
+      border: 1px solid #e4e4e4;
+      padding: 12px 16px;
+      box-sizing: border-box;
+    }
+
+    .cart-panel.is-open {
+      display: block;
+    }
+
+    .cart-panel h2 {
+      margin: 0 0 8px;
+      font-size: 16px;
+    }
+
+    .cart-panel ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .cart-panel li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 8px 0;
+      border-top: 1px solid #eee;
+    }
+
+    .cart-panel .empty {
+      margin: 0;
+      color: #666;
+    }
+
+    .contact {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 64px;
+      background: #d7eefb;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 0 16px;
+      box-sizing: border-box;
+    }
+
+    .contact a {
+      display: flex;
+      line-height: 0;
+    }
+
+    .contact img {
+      width: 40px;
+      height: 40px;
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <img src="pic/page/title.png" alt="m.studio" width="408" height="612">
+  </header>
+  <nav class="tabs" aria-label="頁面">
+    <a href="index.html">首頁</a>
+    <a href="products.html" aria-current="page">商品</a>
+  </nav>
+  <main class="catalog">
+    <div class="grid" id="product-grid"></div>
+  </main>
+
+  <div class="cart-panel" id="cart-panel" hidden>
+    <h2>購物清單</h2>
+    <p class="empty" id="cart-empty">清單是空的</p>
+    <ul id="cart-list"></ul>
+  </div>
+  <div class="buy-bar">
+    <button type="button" id="cart">清單<span id="cart-count" class="is-empty">0</span></button>
+    <button type="button" id="buy">購入</button>
+  </div>
+
+  <footer class="contact">
+    <a href="https://www.instagram.com/m_and_studio/" target="_blank" rel="noopener noreferrer">
+      <img src="pic/page/instagram.png" alt="Instagram" width="40" height="40">
+    </a>
+  </footer>
+  <script>
+    const CART_KEY = "m_studio_cart";
+
+    function loadCart() {
+      try {
+        const raw = window.localStorage.getItem(CART_KEY);
+        const items = raw ? JSON.parse(raw) : [];
+        return Array.isArray(items) ? items : [];
+      } catch (err) {
+        return [];
+      }
+    }
+
+    function saveCart(items) {
+      window.localStorage.setItem(CART_KEY, JSON.stringify(items));
+    }
+
+    function copyOrderTextFallback(text) {
+      const field = document.createElement("textarea");
+      field.value = text;
+      field.setAttribute("readonly", "");
+      field.style.position = "fixed";
+      field.style.top = "0";
+      field.style.left = "0";
+      field.style.opacity = "0";
+      document.body.appendChild(field);
+      field.focus();
+      field.select();
+      field.setSelectionRange(0, field.value.length);
+      document.execCommand("copy");
+      document.body.removeChild(field);
+    }
+
+    function copyOrderText(text) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        return navigator.clipboard.writeText(text).catch(function () {
+          copyOrderTextFallback(text);
+        });
+      }
+      copyOrderTextFallback(text);
+      return Promise.resolve();
+    }
+
+    function renderCart() {
+      const items = loadCart();
+      const list = document.getElementById("cart-list");
+      const empty = document.getElementById("cart-empty");
+      const count = document.getElementById("cart-count");
+      list.innerHTML = "";
+      empty.hidden = items.length > 0;
+      count.textContent = String(items.length);
+      count.classList.toggle("is-empty", items.length === 0);
+      items.forEach(function (item) {
+        const li = document.createElement("li");
+        const label = document.createElement("span");
+        label.textContent = item.name + " x " + String(item.qty);
+        const remove = document.createElement("button");
+        remove.type = "button";
+        remove.textContent = "刪除";
+        remove.addEventListener("click", function () {
+          saveCart(loadCart().filter(function (entry) {
+            return entry.id !== item.id;
+          }));
+          renderCart();
+        });
+        li.appendChild(label);
+        li.appendChild(remove);
+        list.appendChild(li);
+      });
+    }
+
+    document.addEventListener("click", function (event) {
+      const button = event.target.closest(".add-cart");
+      if (!button) {
+        return;
+      }
+      const card = button.closest(".product");
+      const qtyInput = card ? card.querySelector('input[type="number"]') : null;
+      const qty = qtyInput ? Math.floor(Number(qtyInput.value)) : 1;
+      if (!Number.isFinite(qty) || qty < 1) {
+        return;
+      }
+      const source = card || button;
+      const id = source.dataset.id;
+      if (!id) {
+        return;
+      }
+      const items = loadCart();
+      const existing = items.find(function (entry) { return entry.id === id; });
+      if (existing) {
+        existing.qty += qty;
+      } else {
+        items.push({
+          id: id,
+          name: source.dataset.name,
+          stock: Number(source.dataset.stock),
+          qty: qty
+        });
+      }
+      saveCart(items);
+      renderCart();
+    });
+
+    document.getElementById("cart").addEventListener("click", function () {
+      const panel = document.getElementById("cart-panel");
+      const open = panel.classList.toggle("is-open");
+      panel.hidden = !open;
+    });
+
+    document.getElementById("buy").addEventListener("click", async function () {
+      const items = loadCart();
+      if (items.length === 0) {
+        return;
+      }
+      const waitMake = items.some(function (item) {
+        return !Number.isFinite(item.stock) || item.qty > item.stock;
+      });
+      if (waitMake) {
+        const ok = window.confirm("您選擇的部分商品目前庫存數量不足，下單後商品製作會需要些時間");
+        if (!ok) {
+          return;
+        }
+      }
+      const message = items.map(function (item) {
+        return item.name + " x " + String(item.qty);
+      }).join("\n");
+      await copyOrderText(message);
+      const buy = document.getElementById("buy");
+      const label = buy.textContent;
+      buy.textContent = "已複製";
+      window.setTimeout(function () {
+        buy.textContent = label;
+      }, 1500);
+      window.open("https://ig.me/m/m_and_studio", "_blank", "noopener,noreferrer");
+    });
+
+    renderCart();
+  </script>
+
+  <script>
+    function parseProductIds(html) {
+      const doc = new DOMParser().parseFromString(html, "text/html");
+      const ids = [];
+      doc.querySelectorAll("a[href]").forEach(function (link) {
+        let href = link.getAttribute("href") || "";
+        href = href.split("?")[0].split("#")[0];
+        if (!href.endsWith("/")) {
+          return;
+        }
+        const name = decodeURIComponent(href.replace(/^\.\//, "").replace(/\/$/, ""));
+        if (!name || name === ".." || name.indexOf("/") !== -1) {
+          return;
+        }
+        if (!/^[A-Za-z0-9_-]+$/.test(name)) {
+          return;
+        }
+        ids.push(name);
+      });
+      return Array.from(new Set(ids)).sort();
+    }
+
+    function imageExists(url) {
+      return new Promise(function (resolve) {
+        const img = new Image();
+        img.onload = function () { resolve(true); };
+        img.onerror = function () { resolve(false); };
+        img.src = url;
+      });
+    }
+
+    async function existingImage(base, stem) {
+      const extensions = [".png", ".jpg"];
+      for (let index = 0; index < extensions.length; index += 1) {
+        const file = stem + extensions[index];
+        if (await imageExists(base + file)) {
+          return base + file;
+        }
+      }
+      return "";
+    }
+
+    function renderProductCard(product) {
+      const article = document.createElement("article");
+      article.className = "product";
+      article.dataset.id = product.id;
+      article.dataset.name = product.name;
+      article.dataset.stock = String(product.stock);
+      const href = "product.html?id=" + encodeURIComponent(product.id);
+      const src = product.exhibit;
+      article.innerHTML =
+        '<a href="' + href + '"><img src="' + src + '" alt=""></a>' +
+        '<h2 class="name"><a href="' + href + '"></a></h2>' +
+        '<p class="price"></p>' +
+        '<div class="order">' +
+        '<input type="number" min="1" step="1" value="1">' +
+        '<button type="button" class="add-cart">🛒</button>' +
+        "</div>";
+      article.querySelector("img").alt = product.name;
+      article.querySelectorAll("a").forEach(function (link) {
+        if (link.querySelector("img")) {
+          return;
+        }
+        link.textContent = product.name;
+      });
+      article.querySelector(".price").textContent = "NT$ " + String(product.price);
+      return article;
+    }
+
+    async function loadProductIds() {
+      try {
+        const catalog = await fetch("pic/products/catalog.json");
+        if (catalog.ok) {
+          const data = await catalog.json();
+          const list = Array.isArray(data) ? data : data.ids;
+          if (Array.isArray(list) && list.length) {
+            return list.filter(function (id) {
+              return typeof id === "string" && /^[A-Za-z0-9_-]+$/.test(id);
+            });
+          }
+        }
+      } catch (err) {
+        /* 改讀目錄頁 */
+      }
+      const listing = await fetch("pic/products/");
+      if (!listing.ok) {
+        throw new Error("missing catalog");
+      }
+      return parseProductIds(await listing.text());
+    }
+
+    async function loadCatalog() {
+      const grid = document.getElementById("product-grid");
+      if (!grid) {
+        return;
+      }
+      try {
+        const ids = await loadProductIds();
+        const loaded = await Promise.all(ids.map(async function (id) {
+          try {
+            const response = await fetch("pic/products/" + encodeURIComponent(id) + "/goods.json");
+            if (!response.ok) {
+              return null;
+            }
+            const goods = await response.json();
+            const name = String(goods.name || "").trim();
+            const price = Number(goods.price);
+            const stock = Number(goods.stock);
+            if (!name || !Number.isFinite(price)) {
+              return null;
+            }
+            const base = "pic/products/" + encodeURIComponent(id) + "/";
+            const exhibit = await existingImage(base, "exhibit");
+            if (!exhibit) {
+              return null;
+            }
+            return {
+              id: id,
+              name: name,
+              price: price,
+              stock: Number.isFinite(stock) ? stock : 0,
+              exhibit: exhibit
+            };
+          } catch (err) {
+            return null;
+          }
+        }));
+        grid.innerHTML = "";
+        loaded.filter(Boolean).forEach(function (product) {
+          grid.appendChild(renderProductCard(product));
+        });
+        if (!grid.children.length) {
+          grid.textContent = "目前沒有商品。";
+        }
+      } catch (err) {
+        grid.textContent = "無法載入商品目錄，請用本機 http 伺服器開啟。";
+      }
+    }
+
+    loadCatalog();
+  </script>
+
+</body>
+</html>
